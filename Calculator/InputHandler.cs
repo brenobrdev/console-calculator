@@ -3,7 +3,7 @@ namespace Calculator
 {
     public class InputHandler
     {
-        public string HandleOperator()
+        public string HandleInputOperator()
         {
 
             Console.WriteLine("What operation would you like to perform (+, -, *, /)?");
@@ -29,7 +29,26 @@ namespace Calculator
                     return "Division";
                 default:
                     Console.WriteLine("Please enter a valid operator");
-                    return HandleOperator();
+                    return HandleInputOperator();
+            }
+        }
+
+        public float HandleInputNumber()
+        {
+            Console.WriteLine("Enter a number:");
+            string input = Console.ReadLine();
+
+            float inputFloat;
+            bool isInputValid = float.TryParse(input, out inputFloat);
+
+            if (isInputValid)
+            {
+                return inputFloat;
+            }
+            else
+            {
+                Console.WriteLine("Please enter a numeric value.");
+                return HandleInputNumber();
             }
         }
 
