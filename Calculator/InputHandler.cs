@@ -5,40 +5,32 @@ namespace Calculator
     {
         public string HandleOperator()
         {
-            string[] allowedOperators = new string[4] { "+", "-", "*", "/"};
 
             Console.WriteLine("What operation would you like to perform (+, -, *, /)?");
             string input = Console.ReadLine();
 
-            int inputCheck = Array.IndexOf(allowedOperators, input);
-
-            string operatorChosen = InputChoice(inputCheck);
+            string operatorChosen = OperatorInputChoice(input);
 
             return operatorChosen;
+
         }
 
-        string InputChoice(int userInput)
+        string OperatorInputChoice(string userInput)
         {
             switch (userInput)
             {
-                case 0:
+                case "+":
                     return "Addition";
-                case 1:
+                case "-":
                     return "Subtraction";
-                case 2:
+                case "*":
                     return "Multiplication";
-                case 3:
+                case "/":
                     return "Division";
                 default:
                     Console.WriteLine("Please enter a valid operator");
-                    this.HandleOperator();
-                    return null;
+                    return HandleOperator();
             }
-        }
-
-        public int HandleNumber()
-        {
-            return 0;
         }
 
     }
